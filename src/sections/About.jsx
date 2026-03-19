@@ -1,77 +1,66 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { personalInfo, skills } from '../utils/data';
+import { personalInfo } from '../utils/data';
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-zinc-100/50 dark:bg-zinc-900/50 transition-colors relative overflow-hidden">
-      <div className="container mx-auto px-6 max-w-6xl relative z-10">
+    <section id="about" className="py-24 bg-zinc-100/50 dark:bg-zinc-950 transition-colors relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent opacity-50"></div>
+      
+      <div className="container mx-auto px-6 max-w-4xl relative z-10">
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="mb-16 md:text-center"
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="md:text-center mb-16"
         >
           <h2 className="text-3xl md:text-5xl font-bold mb-4">About <span className="text-gradient">Me</span></h2>
           <div className="w-24 h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full md:block hidden"></div>
           <div className="w-24 h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full md:hidden"></div>
         </motion.div>
+        
+        <div className="glass p-10 md:p-14 rounded-3xl shadow-xl relative overflow-hidden group border border-white/40 dark:border-zinc-800">
+          {/* Decorative subtle background circle */}
+          <motion.div 
+            animate={{ 
+              rotate: [0, 90, 0],
+              scale: [1, 1.05, 1],
+            }}
+            transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
+            className="absolute -top-32 -right-32 w-64 h-64 bg-indigo-500/10 dark:bg-indigo-400/5 rounded-full blur-3xl"
+          ></motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          {/* Summary Column */}
-          <motion.div
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          <motion.div 
+            initial={{ opacity: 0, filter: "blur(10px)" }}
+            whileInView={{ opacity: 1, filter: "blur(0px)" }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="space-y-8"
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="relative z-10 space-y-6 text-lg md:text-xl text-zinc-600 dark:text-zinc-400 leading-relaxed font-medium"
           >
-            <div>
-              <h3 className="text-2xl font-bold mb-4 dark:text-zinc-100">Professional Summary</h3>
-              <p className="text-zinc-600 dark:text-zinc-400 leading-relaxed text-lg">
-                {personalInfo.summary}
-              </p>
-            </div>
-            
-            <div className="glass p-8 rounded-2xl border-l-4 border-l-indigo-500 hover:shadow-xl hover:shadow-indigo-500/10 transition-shadow">
-              <h4 className="font-bold text-xl mb-4 dark:text-zinc-100">Key Contributions at Innocito</h4>
-              <ul className="space-y-3">
-                {[
-                  "Developed reusable React components.",
-                  "Managed global state with Redux Toolkit.",
-                  "Integrated UI features (booking, filters, maps, auth).",
-                  "Ensured responsive design and optimized performance."
-                ].map((item, idx) => (
-                  <li key={idx} className="flex items-start">
-                    <span className="text-indigo-500 mr-2 font-bold">•</span>
-                    <span className="text-zinc-600 dark:text-zinc-400 font-medium">{item}</span>
-                  </li>
-                ))}
-              </ul>
-            </div>
+            <p>
+              I am a passionate <strong className="text-indigo-600 dark:text-indigo-400">Front End Developer</strong> with {personalInfo.experience} years of professional experience, currently shaping modern web experiences at <strong className="text-zinc-900 dark:text-zinc-100">Innocito</strong>.
+            </p>
+            <p>
+              My expertise lies in building scalable, consumer-facing web platforms utilizing <strong className="text-zinc-900 dark:text-zinc-100">React.js</strong> and state management libraries like <strong className="text-zinc-900 dark:text-zinc-100">Redux Toolkit</strong>. I have a strong track record of crafting sophisticated features—from comprehensive booking workflows to deep integrations with Google Maps APIs.
+            </p>
+            <p>
+              Beyond just writing code, I focus heavily on delivering seamless, cross-browser compatible, and perfectly responsive user interfaces. My goal is always to merge technical excellence with an intuitive and visually stunning user experience.
+            </p>
           </motion.div>
-
-          {/* Skills Grid Column */}
-          <motion.div
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
+          
+          <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.4 }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="mt-12 flex flex-wrap gap-4 relative z-10 justify-center md:justify-start"
           >
-            <h3 className="text-2xl font-bold mb-6 dark:text-zinc-100">Core Technologies</h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-5">
-              {skills.map((skill, index) => (
-                <motion.div 
-                  key={index}
-                  whileHover={{ y: -5, scale: 1.05 }}
-                  className="flex flex-col items-center justify-center p-5 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm border border-zinc-200 dark:border-zinc-700 hover:border-indigo-500/50 dark:hover:border-indigo-500/50 transition-all cursor-default group"
-                >
-                  <skill.icon className={`text-4xl mb-3 ${skill.color} group-hover:scale-110 transition-transform`} />
-                  <span className="text-sm font-semibold text-zinc-700 dark:text-zinc-300 text-center">{skill.name}</span>
-                </motion.div>
-              ))}
-            </div>
+            {['React Framework', 'State Management', 'UI/UX Polish', 'API Integrations'].map((trait, i) => (
+              <span key={i} className="px-5 py-2 rounded-full border border-indigo-200 dark:border-indigo-900/40 bg-indigo-50 dark:bg-indigo-900/20 text-indigo-700 dark:text-indigo-300 font-semibold text-sm shadow-sm cursor-default hover:bg-indigo-100 dark:hover:bg-indigo-900/40 transition-colors">
+                {trait}
+              </span>
+            ))}
           </motion.div>
         </div>
       </div>
