@@ -61,3 +61,20 @@ export const projects = [
     tags: ["React", "Firebase", "GPT-4", "Tailwind CSS"]
   }
 ];
+
+export const achievements = [
+  {
+    title: "Completed React.js Certification",
+    organization: "NamasteDev.com (Namaste React)",
+    description: "Successfully completed the comprehensive Namaste React course by Akshay Saini, mastering core React principles, advanced hooks, Redux, and modern frontend architecture.",
+    date: "Certification",
+    isCertificate: true
+  },
+  {
+    title: "2nd Position - HackerRank Contest",
+    organization: "Innocito Pvt Ltd.",
+    description: "Secured runner-up position in the Ignition 2025 Hackathon / HackerRank contest conducted by Innocito Pvt Ltd as part of team CitoRovers.",
+    date: "September 2025",
+    isCertificate: false
+  }
+];
