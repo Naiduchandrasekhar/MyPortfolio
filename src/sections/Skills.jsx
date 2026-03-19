@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { motion } from 'framer-motion';
 import { skills } from '../utils/data';
 
@@ -32,8 +32,51 @@ const Skills = () => {
     visible: { opacity: 1, y: 0, transition: { type: "spring", stiffness: 100 } }
   };
 
+  // Memoize the mapped elements to prevent recalculating math operations on re-renders
+  const renderedSkills = useMemo(() => {
+    return skills.map((skill, index) => {
+      const level = skillLevels[skill.name] || 80;
+      const strokeDashoffset = 283 - (283 * level) / 100; // 2 * pi * r = 2 * 3.14 * 45 = ~283
+
+      return (
+        <motion.div 
+          key={index}
+          variants={itemVariants}
+          whileHover={{ y: -5, scale: 1.05 }}
+          className="flex flex-col items-center justify-center p-6 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm border border-zinc-200 dark:border-zinc-700/50 group hover:border-indigo-500/50 dark:hover:border-indigo-500/50 transition-all cursor-default"
+        >
+          <div className="relative w-24 h-24 mb-4 flex items-center justify-center">
+            <svg className="w-full h-full transform -rotate-90 pointer-events-none" viewBox="0 0 100 100">
+              {/* Background circle */}
+              <circle 
+                cx="50" cy="50" r="45" fill="none" 
+                className="stroke-zinc-100 dark:stroke-zinc-700" strokeWidth="8" 
+              />
+              {/* Progress circle */}
+              <motion.circle 
+                cx="50" cy="50" r="45" fill="none" 
+                className="stroke-indigo-500 drop-shadow-md" 
+                strokeWidth="8" strokeLinecap="round"
+                initial={{ strokeDashoffset: 283 }}
+                whileInView={{ strokeDashoffset }}
+                viewport={{ once: true }}
+                transition={{ duration: 1.5, ease: "easeOut", delay: index * 0.1 }}
+                style={{ strokeDasharray: 283 }}
+              />
+            </svg>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <skill.icon className={`text-4xl ${skill.color} group-hover:scale-110 transition-transform duration-300`} />
+            </div>
+          </div>
+          <h3 className="text-zinc-800 dark:text-zinc-200 font-bold text-center mb-1">{skill.name}</h3>
+          <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">{level}%</span>
+        </motion.div>
+      );
+    });
+  }, [skills]); // Only recompute if the skills array payload changes
+
   return (
-    <section id="skills" className="py-24 bg-zinc-100/50 dark:bg-zinc-900/50 transition-colors relative">
+    <section id="skills" className="py-24 bg-zinc-100/50 dark:bg-zinc-900/50 relative">
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}
@@ -54,49 +97,11 @@ const Skills = () => {
           viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-8"
         >
-          {skills.map((skill, index) => {
-            const level = skillLevels[skill.name] || 80;
-            const strokeDashoffset = 283 - (283 * level) / 100; // 2 * pi * r = 2 * 3.14 * 45 = ~283
-
-            return (
-              <motion.div 
-                key={index}
-                variants={itemVariants}
-                whileHover={{ y: -5, scale: 1.05 }}
-                className="flex flex-col items-center justify-center p-6 bg-white dark:bg-zinc-800 rounded-2xl shadow-sm border border-zinc-200 dark:border-zinc-700/50 group hover:border-indigo-500/50 dark:hover:border-indigo-500/50 transition-all cursor-default"
-              >
-                <div className="relative w-24 h-24 mb-4 flex items-center justify-center">
-                  <svg className="w-full h-full transform -rotate-90 pointer-events-none" viewBox="0 0 100 100">
-                    {/* Background circle */}
-                    <circle 
-                      cx="50" cy="50" r="45" fill="none" 
-                      className="stroke-zinc-100 dark:stroke-zinc-700" strokeWidth="8" 
-                    />
-                    {/* Progress circle */}
-                    <motion.circle 
-                      cx="50" cy="50" r="45" fill="none" 
-                      className="stroke-indigo-500 drop-shadow-md" 
-                      strokeWidth="8" strokeLinecap="round"
-                      initial={{ strokeDashoffset: 283 }}
-                      whileInView={{ strokeDashoffset }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 1.5, ease: "easeOut", delay: index * 0.1 }}
-                      style={{ strokeDasharray: 283 }}
-                    />
-                  </svg>
-                  <div className="absolute inset-0 flex items-center justify-center">
-                    <skill.icon className={`text-4xl ${skill.color} group-hover:scale-110 transition-transform duration-300`} />
-                  </div>
-                </div>
-                <h3 className="text-zinc-800 dark:text-zinc-200 font-bold text-center mb-1">{skill.name}</h3>
-                <span className="text-xs font-semibold text-zinc-500 dark:text-zinc-400">{level}%</span>
-              </motion.div>
-            );
-          })}
+          {renderedSkills}
         </motion.div>
       </div>
     </section>
   );
 };
 
-export default Skills;
+export default React.memo(Skills);

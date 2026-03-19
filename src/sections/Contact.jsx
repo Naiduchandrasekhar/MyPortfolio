@@ -33,7 +33,7 @@ const Contact = () => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-zinc-100/50 dark:bg-zinc-950 transition-colors">
+    <section id="contact" className="py-24 bg-zinc-100/50 dark:bg-zinc-950">
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

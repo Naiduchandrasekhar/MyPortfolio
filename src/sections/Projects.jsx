@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { motion } from 'framer-motion';
 import { projects } from '../utils/data';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 
 const Projects = () => {
   return (
-    <section id="projects" className="py-24 transition-colors relative">
+    <section id="projects" className="py-24 relative">
       <div className="container mx-auto px-6 max-w-6xl">
         <motion.div 
           initial={{ opacity: 0, y: 30 }}
@@ -34,10 +34,12 @@ const Projects = () => {
               <div className="relative overflow-hidden h-72">
                 <div className="absolute inset-0 bg-gradient-to-t from-zinc-900/60 via-transparent to-transparent z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                 
-                {/* Image Scale on Hover */}
+                {/* Image Scale on Hover with Native Lazy Loading */}
                 <motion.img 
                   src={project.image} 
                   alt={project.title} 
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover transform origin-center transition-transform duration-700 ease-out group-hover:scale-110"
                 />
                 
@@ -102,4 +104,4 @@ const Projects = () => {
   );
 };
 
-export default Projects;
+export default memo(Projects);

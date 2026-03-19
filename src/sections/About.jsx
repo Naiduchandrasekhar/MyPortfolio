@@ -4,7 +4,7 @@ import { personalInfo } from '../utils/data';
 
 const About = () => {
   return (
-    <section id="about" className="py-24 bg-zinc-100/50 dark:bg-zinc-950 transition-colors relative overflow-hidden">
+    <section id="about" className="py-24 bg-zinc-100/50 dark:bg-zinc-950 relative overflow-hidden">
       <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent opacity-50"></div>
 
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
