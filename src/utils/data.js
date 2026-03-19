@@ -49,14 +49,14 @@ export const projects = [
   {
     title: "YouTube Clone",
     description: "A fully functional YouTube replica with a responsive UI, mimicking core features including video playback, search functionality, and category filtering.",
-    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1683201681321-1415b8794e73?q=80&w=1332&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     link: "https://youwatchtube.netlify.app/",
     tags: ["React", "Redux Toolkit", "Tailwind CSS", "RapidAPI"]
   },
   {
     title: "Netflix GPT Clone",
     description: "An AI-powered streaming service UI, integrated with OpenAI (GPT) for smart, contextual search and personalized movie recommendations.",
-    image: "https://images.unsplash.com/photo-1522869635100-9f4c5e86aa37?q=80&w=1000&auto=format&fit=crop",
+    image: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=1000&auto=format&fit=crop",
     link: "https://netflixgpt-676eb.firebaseapp.com/",
     tags: ["React", "Firebase", "GPT-4", "Tailwind CSS"]
   }

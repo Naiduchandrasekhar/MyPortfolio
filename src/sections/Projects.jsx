@@ -7,7 +7,7 @@ const Projects = () => {
   return (
     <section id="projects" className="py-24 transition-colors">
       <div className="container mx-auto px-6 max-w-6xl">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -32,9 +32,9 @@ const Projects = () => {
               {/* Project Image Container */}
               <div className="relative overflow-hidden h-64">
                 <div className="absolute inset-0 bg-indigo-900/20 group-hover:bg-transparent transition-colors duration-500 z-10"></div>
-                <motion.img 
-                  src={project.image} 
-                  alt={project.title} 
+                <motion.img
+                  src={project.image}
+                  alt={project.title}
                   className="w-full h-full object-cover"
                   whileHover={{ scale: 1.05 }}
                   transition={{ duration: 0.5 }}
@@ -47,11 +47,11 @@ const Projects = () => {
                 <p className="text-zinc-600 dark:text-zinc-400 mb-6 flex-grow leading-relaxed">
                   {project.description}
                 </p>
-                
+
                 <div className="flex flex-wrap gap-2 mb-6">
                   {project.tags.map((tag, i) => (
-                    <span 
-                      key={i} 
+                    <span
+                      key={i}
                       className="text-xs font-semibold px-3 py-1 bg-zinc-100 dark:bg-zinc-800 text-zinc-600 dark:text-zinc-300 rounded-md border border-zinc-200 dark:border-zinc-700 hover:border-indigo-400 dark:hover:border-indigo-500 transition-colors cursor-default"
                     >
                       {tag}
@@ -61,18 +61,18 @@ const Projects = () => {
 
                 {/* Links */}
                 <div className="flex items-center gap-4 mt-auto">
-                  <a 
-                    href={project.link} 
-                    target="_blank" 
+                  <a
+                    href={project.link}
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 font-semibold text-indigo-600 dark:text-indigo-400 hover:text-indigo-800 dark:hover:text-indigo-300 transition-colors"
                   >
                     <FiExternalLink className="w-5 h-5" /> Live Demo
                   </a>
                   {/* GitHub link placeholder if needed */}
-                  <a 
-                    href="https://github.com/Naiduchandrasekhar" 
-                    target="_blank" 
+                  <a
+                    href="https://github.com/Naiduchandrasekhar"
+                    target="_blank"
                     rel="noopener noreferrer"
                     className="flex items-center gap-2 font-semibold text-zinc-600 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white transition-colors"
                   >

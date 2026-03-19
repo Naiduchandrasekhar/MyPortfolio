@@ -4,6 +4,7 @@ import { ThemeProvider } from './context/ThemeContext';
 
 import Navbar from './components/Navbar';
 import Preloader from './components/Preloader';
+import CustomCursor from './components/CustomCursor';
 import Hero from './sections/Hero';
 import About from './sections/About';
 import Experience from './sections/Experience';
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <ThemeProvider>
+      <CustomCursor />
       <AnimatePresence>
         {loading && <Preloader finishLoading={() => setLoading(false)} />}
       </AnimatePresence>
