@@ -3,6 +3,7 @@ import { AnimatePresence } from 'framer-motion';
 import { ThemeProvider } from './context/ThemeContext';
 
 import Navbar from './components/Navbar';
+import { ReactLenis } from 'lenis/react';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -25,6 +26,7 @@ function App() {
       </AnimatePresence>
 
       {!loading && (
+        <ReactLenis root options={{ lerp: 0.05, duration: 1.5, smoothTouch: true }}>
         <div className="font-sans antialiased text-zinc-900 dark:text-zinc-50 min-h-screen flex flex-col selection:bg-indigo-500/30">
           <Navbar />
           <WhatsAppButton />
@@ -44,6 +46,7 @@ function App() {
             </p>
           </footer>
         </div>
+        </ReactLenis>
       )}
     </ThemeProvider>
   );

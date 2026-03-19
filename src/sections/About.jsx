@@ -6,9 +6,9 @@ const About = () => {
   return (
     <section id="about" className="py-24 bg-zinc-100/50 dark:bg-zinc-950 transition-colors relative overflow-hidden">
       <div className="absolute top-0 right-0 w-full h-1 bg-gradient-to-r from-transparent via-indigo-500/50 to-transparent opacity-50"></div>
-      
+
       <div className="container mx-auto px-6 max-w-4xl relative z-10">
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
@@ -19,11 +19,11 @@ const About = () => {
           <div className="w-24 h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 mx-auto rounded-full md:block hidden"></div>
           <div className="w-24 h-1.5 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-full md:hidden"></div>
         </motion.div>
-        
+
         <div className="glass p-10 md:p-14 rounded-3xl shadow-xl relative overflow-hidden group border border-white/40 dark:border-zinc-800">
           {/* Decorative subtle background circle */}
-          <motion.div 
-            animate={{ 
+          <motion.div
+            animate={{
               rotate: [0, 90, 0],
               scale: [1, 1.05, 1],
             }}
@@ -31,7 +31,7 @@ const About = () => {
             className="absolute -top-32 -right-32 w-64 h-64 bg-indigo-500/10 dark:bg-indigo-400/5 rounded-full blur-3xl"
           ></motion.div>
 
-          <motion.div 
+          <motion.div
             initial={{ opacity: 0, filter: "blur(10px)" }}
             whileInView={{ opacity: 1, filter: "blur(0px)" }}
             viewport={{ once: true }}
@@ -48,8 +48,8 @@ const About = () => {
               Beyond just writing code, I focus heavily on delivering seamless, cross-browser compatible, and perfectly responsive user interfaces. My goal is always to merge technical excellence with an intuitive and visually stunning user experience.
             </p>
           </motion.div>
-          
-          <motion.div 
+
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
